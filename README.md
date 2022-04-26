@@ -1,3 +1,3 @@
 # eJPT
 
-Cheat Sheet for eJPT
+Pre-testing notes for eJPT exam
