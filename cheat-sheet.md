@@ -31,6 +31,26 @@ $ dig mysite.com
 - [Sublist3r](https://github.com/aboul3la/Sublist3r)
 - [DNSdumpster](https://dnsdumpster.com/)
 
+## Privilege Escalation
+
+- [GTFOBins](https://gtfobins.github.io/)
+- [LinPeas](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS)
+- [LinEnum](https://github.com/rebootuser/LinEnum)
+
+## Starting a Python httpserver
+
+```
+$ python3 -m http.server <port>
+```
+
+## Spawning a shell
+
+```
+$ bash i 
+```
+```
+$ python -c 'import pty;pty.spawn("/bin/sh")'
+```
 ## Footprinting & Scanning
 
 Find live hosts with fping or nmap
@@ -224,6 +244,30 @@ $ sudo vim /etc/hosts
 <IP addr>	static.foobar.org
 ```
 
+## Metasploit pivoting
+Once inside of a machine find ways to pivot. Go back out and specify within the msfconsole to add the route
+Which is:
+```
+$ route <i.e 192.168.1.0> <subnet mask> <meterpreter session-id>
+```
+After adding the route do a portscan using the
+```
+$ auxiliary(scanner/portscan/tcp)
+```
+
+Set the options and run the scan to discover more hosts within the vulnerable machines network.
+
+Once a host is found you have to go back in the meterpreter and set a portfwd for the discovered host you want to pivot into.
+Which is:
+```
+$ portfwd add -l <whatever local port you want> -p <port you want to go-to> -r <ip of the host you want to go-to>
+```
+Perform a scan of the found host by doing an nmap and targeting yourself (localhost).
+Which is:
+```
+$ nmap -sS -sV -p <port you chose> localhost
+```
+Exploit the found vulnerabilities from there.
 ## Misc
 
 - Found a webshell/admin panel on a site?
