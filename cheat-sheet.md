@@ -37,6 +37,7 @@ Find live hosts with fping or nmap
 ```
 $ fping -a -g 172.16.100.40/24 2>/dev/null | tee alive_hosts.txt
 $ nmap -sn 172.16.100.40/24 -oN alive_hosts.txt
+$ nmap -sS -sV -A 172.16.100.10
 ```
 
 nmap scan types
@@ -116,6 +117,9 @@ $ httprint -P0 -h <target hosts> -s <signature file>
 
 Pick your favorite URI Enumeration tool
 - Gobuster - fast, multi-threaded scanner
+```
+gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://<address>/
+```
 - Dirbuster - nice GUI
 - Dirb - recursively scans directories
 
@@ -130,7 +134,7 @@ Look to exploit user input coming from:
 
 Check for XSS
 ```
-<script>alert(1)</script>
+<script>alert('THM')</script>
 <i>some text</i>
 ```
 
